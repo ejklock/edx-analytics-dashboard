@@ -344,8 +344,7 @@ class PatchMixin:
 
     def stop_patching(self):
         for _patch in self.patches:
-            if _is_started(_patch):
-                _patch.stop()
+            _patch.stop()
 
     def clear_patches(self):
         self.stop_patching()
