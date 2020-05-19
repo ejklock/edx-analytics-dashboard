@@ -27,7 +27,7 @@ install:
     - docker exec -t -e TRAVIS=1 insights_testing bash -c "
       sudo add-apt-repository ppa:deadsnakes/ppa -y;
       sudo apt-get update -y;
-      sudo apt-get install python3.8 python3.8-distutils -y;"
+      sudo apt-get install python3.8 python3.8-distutils python3.8-dev -y;"
     - pip install -r requirements/travis.txt
 
 script:
