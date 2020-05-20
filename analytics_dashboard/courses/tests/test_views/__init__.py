@@ -3,7 +3,8 @@ from __future__ import absolute_import
 import json
 import logging
 
-from unittest.mock import _is_started, Mock, patch
+from unittest import mock
+from unittest.mock import Mock, patch
 import httpretty
 from analyticsclient.exceptions import NotFoundError
 from ddt import data, ddt
@@ -344,7 +345,8 @@ class PatchMixin:
 
     def stop_patching(self):
         for _patch in self.patches:
-            _patch.stop()
+            if hasattr(mock, '_is_started') and mock._is_started(_patch):
+                _patch.stop()
 
     def clear_patches(self):
         self.stop_patching()
